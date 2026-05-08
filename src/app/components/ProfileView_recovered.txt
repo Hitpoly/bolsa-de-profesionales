@@ -1,0 +1,24 @@
+﻿The following changes were made by the USER to: d:\Softwares\Bolsa de Profesionales\src\app\components\ProfileView.tsx. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1,6 +1,1008 @@
+-               </div>
+-            </div>
++import React, { useState, useEffect, useRef } from 'react';
++import { 
++  User, MapPin, Briefcase, Calendar, Globe, Mail, 
++  MessageCircle, ArrowLeft, Star, Award, Sparkles,
++  Linkedin, Github, Twitter, Facebook, ExternalLink,
++  Clock, BookOpen, Languages, CheckCircle2, Heart, Plane, History, Flag,
++  DollarSign, ListChecks, ChevronRight, ShoppingCart, Tag, TrendingDown, ChevronLeft,
++  Timer, Rocket, Zap, ShieldCheck, MoreHorizontal, Share2, Pencil, Eye, Search, X, Phone, Copy
++} from 'lucide-react';
++import axios from 'axios';
++import { useSystem } from '../data/SystemContext';
++
++interface ProfileViewProps {
++  profile: any;
++  onBack: () => void;
++  isOwnProfile?: boolean;
++}
++
+<truncated 60779 bytes>

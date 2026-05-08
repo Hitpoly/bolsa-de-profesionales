@@ -1,0 +1,12 @@
+# Configuración de CORS Dinámica
+SetEnvIf Origin "http(s)?://(localhost:5173|localhost:3000|.*\.hitpoly\.com)$" AccessControlAllowOrigin=$0
+Header always set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+Header always set Access-Control-Allow-Credentials "true"
+
+# Manejo de peticiones OPTIONS (Pre-vuelo)
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule .* - [R=200,L]

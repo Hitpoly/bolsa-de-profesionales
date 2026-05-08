@@ -1,0 +1,6 @@
+- [ ] Analyze current navigation structure and button placement
+- [ ] Identify which pages should display the buttons (education pages)
+- [ ] Locate and modify button components to conditionally render only on education pages
+- [ ] Verify button behavior when navigating back/forward
+- [ ] Test across different routes to ensure buttons disappear outside education pages
+- [ ] Implement and commit changes
