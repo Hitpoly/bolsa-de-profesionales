@@ -22,3 +22,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backend (PHP, API, SQL, docs)
+api/
+*.php
+*.sql
+docs/
+/.htaccess
+BACKEND_EMPRESA.md
+PLAN_PERFIL_EMPRESA.md
+fix_foreign_key.sql
+fusionar_tablas_empresa.sql
+insert_sectores_pro.sql
+update_empresas_table.sql
+create_postulaciones_table.sql
+setup_especialidades.sql
+run_migration_postulaciones.php
+check_data.php
+check_tables.php
+move
+tsconfig.build.json.disabled
+tsconfig.json.disabled
+todo.txt

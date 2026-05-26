@@ -1,19 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface Cargo {
-  id: number;
-  nombre: string;
-}
-
-interface FilterBarProps {
-  selectedCargo: number | null;
-  onCargoChange: (cargoId: number | null) => void;
-  cargos?: Cargo[];
-}
-
-export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }: FilterBarProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }) {
+  const scrollRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
@@ -31,7 +20,7 @@ export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }: FilterB
     return () => window.removeEventListener('resize', checkScroll);
   }, [cargos]);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scroll = (direction) => {
     if (scrollRef.current) {
       const scrollAmount = 300;
       scrollRef.current.scrollBy({
@@ -41,7 +30,7 @@ export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }: FilterB
     }
   };
 
-  const handleWheel = (e: React.WheelEvent) => {
+  const handleWheel = (e) => {
     if (scrollRef.current) {
       if (e.deltaY !== 0) {
         scrollRef.current.scrollLeft += e.deltaY;
@@ -105,12 +94,18 @@ export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }: FilterB
           <button
             key={cargo.id}
             onClick={() => onCargoChange(cargo.id)}
-            className={`flex-none px-4 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap border ${
+            className={`flex-none px-4 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap border flex items-center gap-2 ${
               selectedCargo === cargo.id
                 ? 'bg-[#057642] text-white border-[#057642]'
                 : 'bg-white text-gray-600 border-gray-400 hover:bg-gray-50'
             }`}
           >
+            {cargo.icono && (
+              <span 
+                className="w-4 h-4 flex-none flex items-center justify-center [&>svg]:w-full [&>svg]:h-full"
+                dangerouslySetInnerHTML={{ __html: cargo.icono }}
+              />
+            )}
             {cargo.nombre}
           </button>
         ))}
@@ -118,7 +113,7 @@ export function FilterBar({ selectedCargo, onCargoChange, cargos = [] }: FilterB
 
       {/* Flecha Derecha (Solo Desktop) */}
       {showRightArrow && (
-        <div className="desktop-nav absolute right-0 top-0 bottom-0 z-10 flex items-center pl-12 bg-gradient-to-l from-white via-white to-transparent">
+        <div className="desktop-nav absolute right-0 top-0 bottom-0 z-10 flex items-center pl-12 bg-gradient-l from-white via-white to-transparent">
           <button
             onClick={() => scroll('right')}
             className="p-2 bg-white border border-gray-100 rounded-full shadow-lg hover:bg-gray-50 transition-all text-gray-600"

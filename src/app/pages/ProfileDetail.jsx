@@ -5,11 +5,11 @@ import { ProfileView } from '../components/ProfileView';
 import { obtenerTodoElPerfil } from '../services/api';
 
 export function ProfileDetail() {
-  const { userId } = useParams<{ userId: string }>();
+  const { userId } = useParams();
   const navigate = useNavigate();
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const cargarPerfil = async () => {

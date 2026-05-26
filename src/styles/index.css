@@ -1,3 +1,48 @@
-@import './fonts.css';
 @import './tailwind.css';
+@import './fonts.css';
 @import './theme.css';
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .custom-scrollbar-subtle::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar-subtle::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar-subtle::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+  }
+  .custom-scrollbar-subtle:hover::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+  }
+
+  .scrollbar-tabs::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scrollbar-tabs::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-tabs::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.08);
+    border-radius: 10px;
+  }
+  .scrollbar-tabs:hover::-webkit-scrollbar-thumb {
+    background: rgba(0,102,204,0.2);
+  }
+  .scrollbar-tabs {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.08) transparent;
+  }
+  .scrollbar-tabs:hover {
+    scrollbar-color: rgba(0,102,204,0.2) transparent;
+  }
+}

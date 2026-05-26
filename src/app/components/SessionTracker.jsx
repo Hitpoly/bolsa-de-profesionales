@@ -12,7 +12,7 @@ export const SessionTracker = () => {
         // 1. REGISTRAR INGRESO
         const startSession = async () => {
             try {
-                const response = await fetch('http://localhost:5173/api/ajax/vinculacionController.php', {
+                const response = await fetch('https://bolsaprofesionales.hitpoly.com/api/ajax/vinculacionController.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -23,7 +23,7 @@ export const SessionTracker = () => {
                 const result = await response.json();
                 if (result.success) {
                     sessionIdRef.current = result.session_id;
-                    console.log("[TRACKER] Sesión iniciada:", result.session_id);
+
                 }
             } catch (error) {
                 console.error("[TRACKER] Error al iniciar sesión:", error);
@@ -41,8 +41,8 @@ export const SessionTracker = () => {
                 });
                 
                 // Usamos sendBeacon para asegurar que la petición se envíe incluso al cerrar la pestaña
-                navigator.sendBeacon('http://localhost:5173/api/ajax/vinculacionController.php', data);
-                console.log("[TRACKER] Petición de salida enviada.");
+                navigator.sendBeacon('https://bolsaprofesionales.hitpoly.com/api/ajax/vinculacionController.php', data);
+
             }
         };
     }, []);
